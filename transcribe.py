@@ -4,6 +4,11 @@ import logging
 import requests
 from typing import Optional
 from requests.exceptions import RequestException
+from dotenv import load_dotenv
+
+load_dotenv()
+
+api_key=os.getenv("ola_assemblyai")
 
 # Setup basic logging
 logging.basicConfig(level=logging.INFO)
@@ -11,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 def transcribe_audio(
     audio_url: str,
-    api_key: str = "f606d54ead694350a98f591a472aee86",
+    api_key: str = api_key,
     model: str = "universal",
     timeout_seconds: int = 180,
     max_retries: int = 5,
