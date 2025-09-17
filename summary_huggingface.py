@@ -2,8 +2,6 @@ import os
 import httpx
 
 API_TOKEN = os.getenv("ola_huggingface")
-if not API_TOKEN:
-    raise EnvironmentError("Missing Hugging Face API token. Set ola_huggingface environment variable.")
 
 API_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-cnn"
 HEADERS = {"Authorization": f"Bearer {API_TOKEN}"}
@@ -31,3 +29,4 @@ async def summarize_text_async(text: str, max_length: int = 500, min_length: int
             raise RuntimeError(f"Hugging Face API error: {http_err}") from http_err
         except (KeyError, IndexError) as parse_err:
             raise RuntimeError(f"Invalid response from Hugging Face API: {response.text}") from parse_err
+
