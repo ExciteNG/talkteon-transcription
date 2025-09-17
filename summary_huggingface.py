@@ -1,5 +1,10 @@
 import os
 import httpx
+from dotenv import load_dotenv
+
+
+
+load_dotenv()
 
 API_TOKEN = os.getenv("ola_huggingface")
 
@@ -29,4 +34,3 @@ async def summarize_text_async(text: str, max_length: int = 500, min_length: int
             raise RuntimeError(f"Hugging Face API error: {http_err}") from http_err
         except (KeyError, IndexError) as parse_err:
             raise RuntimeError(f"Invalid response from Hugging Face API: {response.text}") from parse_err
-
