@@ -1,8 +1,10 @@
-# summary_gemini.py   AIzaSyAvrt4hRNlQqfcIkcCn5APCf5Kz8KUgFtA
 
 import os
 import google.generativeai as genai
 from starlette.concurrency import run_in_threadpool
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 genai.configure(api_key=os.getenv("ola_gemini"))
